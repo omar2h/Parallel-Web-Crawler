@@ -43,7 +43,13 @@ public final class WebCrawlerMain {
     else{
       resultWriter.write(Path.of(config.getResultPath()));
     }
-    // TODO: Write the profile data to a text file (or System.out if the file name is empty)
+    // DONE: Write the profile data to a text file (or System.out if the file name is empty)
+    if(config.getProfileOutputPath().isBlank()){
+      profiler.writeData(new OutputStreamWriter(System.out));
+    }
+    else{
+      profiler.writeData(Path.of(config.getProfileOutputPath()));
+    }
   }
 
   public static void main(String[] args) throws Exception {
